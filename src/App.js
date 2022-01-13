@@ -1,22 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import { getSchools } from './api/schools';
 
 function App() {
+
+  useEffect(() => {
+      const getData = async () => {
+      const result = await getSchools()
+      console.log(result.data);
+    }
+    getData()
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          Agnes search
+        </h1>
       </header>
     </div>
   );
