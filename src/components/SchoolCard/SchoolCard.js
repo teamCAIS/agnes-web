@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { getDistance } from "../../helpers/location";
 
 const StyledCard = styled.li`
   margin: 1rem 0;
@@ -36,7 +37,13 @@ const StyledCard = styled.li`
   }
 `;
 
-const SchoolCard = ({info, distance}) => {
+const SchoolCard = ({info, location}) => {
+
+  const [lat1, lon1] = location
+  const [lat2, lon2] = info.location.coordinates.reverse();
+  console.log(lat1, lon1, lat2, lon2);
+  const distance = getDistance(lat1, lon1, lat2, lon2).toFixed(1).replace(".", ",");
+  console.log(distance);
 
   return (
     <StyledCard>

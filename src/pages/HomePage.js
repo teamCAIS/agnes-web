@@ -74,11 +74,17 @@ const HomePage = () => {
     <StyledHome>
       <header>
       <h1>
-        Bem-vinde ao projeto AGNES
+        {!loadingStatus.hasStarted ? (
+          <span>Bem-vinde ao{" "}</span>
+        ) : null}
+        projeto AGNES
       </h1>
-      <p>
-      Nós queremos ajudar você e outros estudantes a encontrar escolas que estejam melhor preparadas para apoiar a causa trans. Abaixo você pode buscar por escolas e ver mais informações sobre elas
-      </p>
+      {!loadingStatus.hasStarted ? (
+        <p>
+        Nós queremos ajudar você e outros estudantes a encontrar escolas que estejam melhor preparadas para apoiar a causa trans. Abaixo você pode buscar por escolas e ver mais informações sobre elas
+        </p>
+      ) : null}
+      
       </header>
       <Label>
         Usar nome da escola
@@ -93,7 +99,8 @@ const HomePage = () => {
         <ul>
           {loadingStatus.items.map(school => (
             <SchoolCard 
-              info={school} 
+              info={school}
+              location={filters.coordinates.split(",")}
               key={`school-${school._id}`}
             >
             </SchoolCard>

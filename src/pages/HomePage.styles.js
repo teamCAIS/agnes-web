@@ -5,6 +5,10 @@ export const StyledHome = styled.main`
   max-width: 700px;
   margin: auto;
 
+  h1 {
+    margin-bottom: 1rem;
+  }
+
   section {
     border-top: 1px solid var(--color-line);
     padding-top: 1.125rem;
