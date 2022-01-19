@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { getSchools } from "../api/schools";
 import useInfiniteScroll from 'react-infinite-scroll-hook';
+import { StyledHome } from "./HomePage.styles";
+import { ButtonPrimary } from "../components/Button";
+import SchoolCard from "../components/SchoolCard/SchoolCard";
+import { getDistance } from "../helpers/location";
 
 const initialStatus = {
   loading: false,
@@ -72,7 +76,7 @@ const HomePage = () => {
   });
 
   return (
-    <main>
+    <StyledHome>
       <header>
       <h1>
         Bem-vinde ao projeto AGNES
@@ -81,18 +85,23 @@ const HomePage = () => {
       Nós queremos ajudar você e outros estudantes a encontrar escolas que estejam melhor preparadas para apoiar a causa trans. Abaixo você pode buscar por escolas e ver mais informações sobre elas
       </p>
       </header>
-      <button onClick={onSearch}>Buscar</button>
-      <ul>
-        {loadingStatus.items.map(school => (
-          <li key={`school-${school._id}`}>
-            <h2>{school.name}</h2>
-          </li>
-        ))}
-      </ul>
-      {(loadingStatus.loading || loadingStatus.hasStarted) && (loadingStatus.hasNextPage) && (
-        <p ref={sentryRef}>Carregando...</p>
-      )}
-    </main>
+      <ButtonPrimary onClick={onSearch}>Buscar</ButtonPrimary>
+      <section>
+        <h2>Lista de escolas</h2>
+        <ul>
+          {loadingStatus.items.map(school => (
+            <SchoolCard 
+              info={school} 
+              key={`school-${school._id}`}
+            >
+            </SchoolCard>
+          ))}
+        </ul>
+        {(loadingStatus.loading || loadingStatus.hasStarted) && (loadingStatus.hasNextPage) && (
+          <p ref={sentryRef}>Carregando...</p>
+        )}
+      </section>
+    </StyledHome>
   )
 
 }
