@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getSchools } from "../api/schools";
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 
@@ -14,16 +14,17 @@ const initialStatus = {
 const HomePage = () => {
 
   const [loadingStatus, setLoadingStatus] = useState(initialStatus)
+  const [filters, setFilters] = useState({radius:5})
 
   console.log(loadingStatus);
 
-  const loadSchools = async (currentItems=loadingStatus.items, page=loadingStatus.page) => {
+  const loadSchools = async (currentItems=loadingStatus.items, page=loadingStatus.page, currentFilters=filters) => {
     console.log("*** loadSchools ***");
     if(loadingStatus.loading) return;
     setLoadingStatus({...loadingStatus, loading: true, items: currentItems})
     try {
       console.log("*** starting new load ***");
-      const result = await getSchools(page)
+      const result = await getSchools(page, currentFilters)
       setLoadingStatus({
         ...loadingStatus,
         loading: false,
@@ -38,6 +39,19 @@ const HomePage = () => {
       setLoadingStatus({...loadingStatus, loading: false, error: true})
     }
   }
+
+  useEffect(() => {
+    console.log("Beggin hook");
+    if("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        console.log(position);
+        const coordinates = `${position.coords.latitude},${position.coords.longitude}`
+        setFilters({...filters,coordinates})
+        loadSchools([], 1, {...filters,coordinates});
+      })
+    }
+    console.log("End hook");
+  }, [])
 
   const onSearch = async () => {
     setLoadingStatus({...initialStatus})
@@ -64,7 +78,7 @@ const HomePage = () => {
         Bem-vinde ao projeto AGNES
       </h1>
       <p>
-        Nós queremos ajudar você e outros estudantes
+      Nós queremos ajudar você e outros estudantes a encontrar escolas que estejam melhor preparadas para apoiar a causa trans. Abaixo você pode buscar por escolas e ver mais informações sobre elas
       </p>
       </header>
       <button onClick={onSearch}>Buscar</button>
@@ -75,7 +89,7 @@ const HomePage = () => {
           </li>
         ))}
       </ul>
-      {(loadingStatus.loading || loadingStatus.hasStarted) && (
+      {(loadingStatus.loading || loadingStatus.hasStarted) && (loadingStatus.hasNextPage) && (
         <p ref={sentryRef}>Carregando...</p>
       )}
     </main>
