@@ -41,7 +41,6 @@ const SchoolCard = ({info, location}) => {
 
   const [lat1, lon1] = location
   const [lon2, lat2] = info.location.coordinates.reverse();
-  console.log(lat1, lon1, lat2, lon2);
   const distance = getDistance(lat1, lon1, lat2, lon2).toFixed(1).replace(".", ",");
 
   return (

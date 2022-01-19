@@ -21,14 +21,11 @@ const HomePage = () => {
   const [loadingStatus, setLoadingStatus] = useState(initialStatus)
   const [filters, setFilters] = useState({radius:5, search: ""})
 
-  console.log(loadingStatus);
 
   const loadSchools = async (currentItems=loadingStatus.items, page=loadingStatus.page, currentFilters=filters) => {
-    console.log("*** loadSchools ***");
     if(loadingStatus.loading) return;
     setLoadingStatus({...loadingStatus, loading: true, items: currentItems})
     try {
-      console.log("*** starting new load ***");
       const result = await getSchools(page, currentFilters)
       setLoadingStatus({
         ...loadingStatus,
@@ -46,16 +43,13 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    console.log("Beggin hook");
     if("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
         const coordinates = `${position.coords.latitude},${position.coords.longitude}`
         setFilters({...filters,coordinates})
         loadSchools([], 1, {...filters,coordinates});
       })
     }
-    console.log("End hook");
   }, [])
 
   const onSearch = async () => {
