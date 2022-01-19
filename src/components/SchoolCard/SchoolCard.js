@@ -11,6 +11,7 @@ const StyledCard = styled.li`
   h3 {
     text-overflow: ellipsis;
     overflow: hidden;
+    text-transform: capitalize;
   }
   
   .info {
@@ -39,7 +40,7 @@ const SchoolCard = ({info, distance}) => {
 
   return (
     <StyledCard>
-      <h3>{info.name}</h3>
+      <h3>{info.name.toLowerCase()}</h3>
       <ul className="info">
         <li>2km</li>
         <li>4,5</li>

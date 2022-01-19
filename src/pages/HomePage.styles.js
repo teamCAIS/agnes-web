@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const StyledHome = styled.main`
   padding: var(--app-margin);
+  max-width: 700px;
+  margin: auto;
 
   section {
     border-top: 1px solid var(--color-line);

@@ -9,6 +9,10 @@
   --color-gray: #707070;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -358,6 +362,11 @@ template {
 
 [hidden] {
   display: none;
+}
+
+input:focus
+{
+	outline:0;
 }
 
 ul {

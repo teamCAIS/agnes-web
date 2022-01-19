@@ -5,6 +5,7 @@ import { StyledHome } from "./HomePage.styles";
 import { ButtonPrimary } from "../components/Button";
 import SchoolCard from "../components/SchoolCard/SchoolCard";
 import { getDistance } from "../helpers/location";
+import { Label, TextInput } from "../components/Inputs";
 
 const initialStatus = {
   loading: false,
@@ -18,7 +19,7 @@ const initialStatus = {
 const HomePage = () => {
 
   const [loadingStatus, setLoadingStatus] = useState(initialStatus)
-  const [filters, setFilters] = useState({radius:5})
+  const [filters, setFilters] = useState({radius:5, search: ""})
 
   console.log(loadingStatus);
 
@@ -66,13 +67,7 @@ const HomePage = () => {
     loading: loadingStatus.loading,
     hasNextPage: loadingStatus.hasNextPage,
     onLoadMore: loadSchools,
-    // When there is an error, we stop infinite loading.
-    // It can be reactivated by setting "error" state as undefined.
     disabled: !!loadingStatus.error,
-    // `rootMargin` is passed to `IntersectionObserver`.
-    // We can use it to trigger 'onLoadMore' when the sentry comes near to become
-    // visible, instead of becoming fully visible on the screen.
-    //rootMargin: '0px 0px 400px 0px',
   });
 
   return (
@@ -85,6 +80,13 @@ const HomePage = () => {
       Nós queremos ajudar você e outros estudantes a encontrar escolas que estejam melhor preparadas para apoiar a causa trans. Abaixo você pode buscar por escolas e ver mais informações sobre elas
       </p>
       </header>
+      <Label>
+        Usar nome da escola
+        <TextInput 
+          value={filters.search}
+          onChange={e => setFilters({...filters, search: e.target.value})}
+        />
+      </Label>
       <ButtonPrimary onClick={onSearch}>Buscar</ButtonPrimary>
       <section>
         <h2>Lista de escolas</h2>
