@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getDistance } from "../../helpers/location";
+import { Tag, Tags } from "../Tags";
 
 const StyledCard = styled.li`
   margin: 1rem 0;
@@ -26,15 +28,8 @@ const StyledCard = styled.li`
 
   .tags {
     margin-top: 1rem;
-    display: flex;
-    flex-wrap: no-wrap;
-    li {
-      margin-right: 0.5rem;
-      border-radius: 16px;
-      background: var(--color-line);
-      padding: 4px 8px;
-    }
   }
+  
 `;
 
 const SchoolCard = ({info, location}) => {
@@ -48,6 +43,7 @@ const SchoolCard = ({info, location}) => {
   }
 
   return (
+    <Link to="/escola/detalhes">
     <StyledCard>
       <h3>{info.name.toLowerCase()}</h3>
       <ul className="info">
@@ -56,15 +52,16 @@ const SchoolCard = ({info, location}) => {
         ) : null}
         <li>4,5</li>
       </ul>
-      <ul className="tags">
-        <li>
+      <Tags className="tags">
+        <Tag>
           Nome Social
-        </li>
-        <li>
+        </Tag>
+        <Tag>
           Banheiro inclusivo
-        </li>
-      </ul>
+        </Tag>
+      </Tags>
     </StyledCard>
+    </Link>
   )
 }
 

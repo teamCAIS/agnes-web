@@ -37,3 +37,18 @@ export const ButtonPrimary = styled(Button)`
   color: var(--color-base);
   font-weight: 600;
 `;
+
+export const ImageButton = styled(Button)`
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: ${({img}) => `url(${img});`}
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+export const ButtonLabel = styled.span`
+  font-size: 0;
+  height: 1px;
+  overflow: hidden;
+  display: block;
+`;
