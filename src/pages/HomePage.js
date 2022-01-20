@@ -4,7 +4,6 @@ import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { StyledHome } from "./HomePage.styles";
 import { ButtonPrimary } from "../components/Button";
 import SchoolCard from "../components/SchoolCard/SchoolCard";
-import { getDistance } from "../helpers/location";
 import { Label, TextInput } from "../components/Inputs";
 
 const initialStatus = {
@@ -94,7 +93,7 @@ const HomePage = () => {
           {loadingStatus.items.map(school => (
             <SchoolCard 
               info={school}
-              location={filters.coordinates.split(",")}
+              location={filters.coordinates ? filters.coordinates.split(",") : null}
               key={`school-${school._id}`}
             >
             </SchoolCard>

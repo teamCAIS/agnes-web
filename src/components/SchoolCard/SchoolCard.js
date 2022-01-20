@@ -39,15 +39,21 @@ const StyledCard = styled.li`
 
 const SchoolCard = ({info, location}) => {
 
-  const [lat1, lon1] = location
-  const [lon2, lat2] = info.location.coordinates.reverse();
-  const distance = getDistance(lat1, lon1, lat2, lon2).toFixed(1).replace(".", ",");
+  let distance = null;
+
+  if(location) {
+    const [lat1, lon1] = location
+    const [lon2, lat2] = info.location.coordinates.reverse();
+    distance = getDistance(lat1, lon1, lat2, lon2).toFixed(1).replace(".", ",");
+  }
 
   return (
     <StyledCard>
       <h3>{info.name.toLowerCase()}</h3>
       <ul className="info">
-        <li>{distance}km</li>
+        {distance !== null ? (
+          <li>{distance}km</li>
+        ) : null}
         <li>4,5</li>
       </ul>
       <ul className="tags">
