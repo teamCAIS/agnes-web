@@ -43,7 +43,7 @@ const SchoolCard = ({info, location}) => {
   }
 
   return (
-    <Link to="/escola/detalhes">
+    // <Link to="/escola/detalhes">
     <StyledCard>
       <h3>{info.name.toLowerCase()}</h3>
       <ul className="info">
@@ -61,7 +61,7 @@ const SchoolCard = ({info, location}) => {
         </Tag>
       </Tags>
     </StyledCard>
-    </Link>
+    // </Link>
   )
 }
 

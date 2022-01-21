@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import { getSchools } from "../api/schools";
+import { getSchools } from "../../api/schools";
 import useInfiniteScroll from 'react-infinite-scroll-hook';
-import { StyledHome } from "./HomePage.styles";
-import { ButtonPrimary } from "../components/Button";
-import SchoolCard from "../components/SchoolCard/SchoolCard";
-import { Label, TextInput } from "../components/Inputs";
+import HomePage from "./HomePage";
 
 const initialStatus = {
   loading: false,
@@ -15,11 +12,16 @@ const initialStatus = {
   hasStarted: false,
 }
 
-const HomePage = () => {
+const PAGES = {
+  HOME_PAGE = 0,
+  SCHOOL_DETAILS = 1,
+}
 
-  const [loadingStatus, setLoadingStatus] = useState(initialStatus)
-  const [filters, setFilters] = useState({radius:5, search: ""})
+const Home = () => {
 
+  const [loadingStatus, setLoadingStatus] = useState(initialStatus);
+  const [filters, setFilters] = useState({radius:5, search: ""});
+  const [currentPage, setCurrentPage] = useState(PAGES.HOME_PAGE);
 
   const loadSchools = async (currentItems=loadingStatus.items, page=loadingStatus.page, currentFilters=filters) => {
     if(loadingStatus.loading) return;
@@ -81,44 +83,16 @@ const HomePage = () => {
   });
 
   return (
-    <StyledHome>
-      <header>
-      <h1>
-        projeto AGNES
-      </h1>
-      
-      </header>
-      <Label>
-        Pesquise uma escola
-        <TextInput 
-          value={filters.search}
-          onChange={e => setFilters({...filters, search: e.target.value})}
-        />
-      </Label>
-      <Label>
-        Usar sua localização
-        <input type="checkbox" onChange={onChangeUseLocation} />
-      </Label>
-      <ButtonPrimary onClick={onSearch}>Buscar</ButtonPrimary>
-      <section>
-        <h2>Lista de escolas</h2>
-        <ul>
-          {loadingStatus.items.map(school => (
-            <SchoolCard 
-              info={school}
-              location={filters.coordinates ? filters.coordinates.split(",") : null}
-              key={`school-${school._id}`}
-            >
-            </SchoolCard>
-          ))}
-        </ul>
-        {(loadingStatus.loading || loadingStatus.hasStarted) && (loadingStatus.hasNextPage) && (
-          <p ref={sentryRef}>Carregando...</p>
-        )}
-      </section>
-    </StyledHome>
+    <HomePage
+      loadingStatus={loadingStatus}
+      filters={filters}
+      setFilters={setFilters}
+      onChangeUseLocation={onChangeUseLocation}
+      onSearch={onSearch}
+      sentryRef={sentryRef}
+    />
   )
 
 }
 
-export default HomePage;
+export default Home;
