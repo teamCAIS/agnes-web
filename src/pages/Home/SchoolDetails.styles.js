@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import star from '../assets/star.png'
+import star from '../../assets/star.png'
 
 export const StyledSchoolDetails = styled.main`
   max-width: 700px;

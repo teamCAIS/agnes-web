@@ -32,7 +32,7 @@ const StyledCard = styled.li`
   
 `;
 
-const SchoolCard = ({info, location}) => {
+const SchoolCard = ({info, location, setSelectedSchool}) => {
 
   let distance = null;
 
@@ -44,7 +44,7 @@ const SchoolCard = ({info, location}) => {
 
   return (
     // <Link to="/escola/detalhes">
-    <StyledCard>
+    <StyledCard onClick={() => setSelectedSchool(info)}>
       <h3>{info.name.toLowerCase()}</h3>
       <ul className="info">
         {distance !== null ? (

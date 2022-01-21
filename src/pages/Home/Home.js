@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getSchools } from "../../api/schools";
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import HomePage from "./HomePage";
+import SchoolDetails from "./SchoolDetails";
 
 const initialStatus = {
   loading: false,
@@ -12,16 +13,11 @@ const initialStatus = {
   hasStarted: false,
 }
 
-const PAGES = {
-  HOME_PAGE = 0,
-  SCHOOL_DETAILS = 1,
-}
-
 const Home = () => {
 
   const [loadingStatus, setLoadingStatus] = useState(initialStatus);
   const [filters, setFilters] = useState({radius:5, search: ""});
-  const [currentPage, setCurrentPage] = useState(PAGES.HOME_PAGE);
+  const [selectedSchool, setSelectedSchool] = useState(null);
 
   const loadSchools = async (currentItems=loadingStatus.items, page=loadingStatus.page, currentFilters=filters) => {
     if(loadingStatus.loading) return;
@@ -45,7 +41,6 @@ const Home = () => {
 
   const onChangeUseLocation = (e) => {
     const shouldUseLocation = e.target.checked;
-    console.log(shouldUseLocation);
     if(!shouldUseLocation) {
       setFilters({...filters,coordinates: ""})
       return;
@@ -82,6 +77,15 @@ const Home = () => {
     disabled: !!loadingStatus.error,
   });
 
+  if(selectedSchool) {
+    return (
+      <SchoolDetails
+        selectedSchool={selectedSchool}
+        setSelectedSchool={setSelectedSchool}
+      />
+    )
+  }
+
   return (
     <HomePage
       loadingStatus={loadingStatus}
@@ -90,6 +94,7 @@ const Home = () => {
       onChangeUseLocation={onChangeUseLocation}
       onSearch={onSearch}
       sentryRef={sentryRef}
+      setSelectedSchool={setSelectedSchool}
     />
   )
 

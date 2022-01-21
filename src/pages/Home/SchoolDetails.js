@@ -1,16 +1,20 @@
-import { ButtonLabel, ImageButton } from "../components/Button";
-import { SmallTag, Tags } from "../components/Tags";
+import { ButtonLabel, ImageButton } from "../../components/Button";
+import { SmallTag, Tags } from "../../components/Tags";
 import { StyledSchoolDetails } from "./SchoolDetails.styles";
-import back from '../assets/back.png';
+import back from '../../assets/back.png'
 
-const SchoolDetails = () => {
+const SchoolDetails = ({setSelectedSchool}) => {
 
   return (
     <StyledSchoolDetails>
       <header>
         <div className="app-bar">
           <h1>Nome da Escola</h1>
-          <ImageButton img={back} className="back-btn">
+          <ImageButton 
+            icon={back} 
+            className="back-btn"
+            onClick={() => setSelectedSchool(null)}
+          >
             <ButtonLabel>voltar</ButtonLabel>
           </ImageButton>
         </div>

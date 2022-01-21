@@ -11,6 +11,7 @@ const HomePage = ({
     onChangeUseLocation,
     onSearch,
     sentryRef,
+    setSelectedSchool,
   }) => {
 
   return (
@@ -41,6 +42,7 @@ const HomePage = ({
               info={school}
               location={filters.coordinates ? filters.coordinates.split(",") : null}
               key={`school-${school._id}`}
+              setSelectedSchool={setSelectedSchool}
             >
             </SchoolCard>
           ))}

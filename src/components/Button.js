@@ -26,6 +26,8 @@ export const Button = styled.button`
     outline: none;
   }
 
+  cursor: pointer;
+
 `;
 
 export const ButtonPrimary = styled(Button)`
