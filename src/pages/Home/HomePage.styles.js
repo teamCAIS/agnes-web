@@ -19,4 +19,14 @@ export const StyledHome = styled.main`
     font-size: 1.125rem;
   }
 
+  .search-field {
+    position: relative;
+
+    button {
+      position: absolute;
+      right: 9px;
+      bottom: 9px;
+    }
+  }
+
 `;

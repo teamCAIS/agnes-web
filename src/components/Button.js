@@ -41,11 +41,22 @@ export const ButtonPrimary = styled(Button)`
 `;
 
 export const ImageButton = styled(Button)`
-  width: 1.5rem;
-  height: 1.5rem;
-  background-image: ${({icon}) => `url(${icon});`}
-  background-repeat: no-repeat;
-  background-position: center;
+  width: ${({size}) => size ? size : `1.5rem`};
+  height: ${({size}) => size ? size : `1.5rem`};
+  border-radius: 8px;
+  padding: ${({background}) => background ? '6px' : 'unset'};
+  background-color: ${({background}) => background ? 'var(--color-primary)' : 'transparent'};
+  display: flex;
+  &::before {
+    flex:1;
+    content: "";
+    display: block;
+    background-image: ${({icon}) => `url(${icon});`}
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  
 `;
 
 export const ButtonLabel = styled.span`

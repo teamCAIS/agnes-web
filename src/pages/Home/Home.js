@@ -3,6 +3,7 @@ import { getSchools } from "../../api/schools";
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import HomePage from "./HomePage";
 import SchoolDetails from "./SchoolDetails";
+import Filter from "./Filter";
 
 const initialStatus = {
   loading: false,
@@ -18,6 +19,7 @@ const Home = () => {
   const [loadingStatus, setLoadingStatus] = useState(initialStatus);
   const [filters, setFilters] = useState({radius:5, search: ""});
   const [selectedSchool, setSelectedSchool] = useState(null);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const loadSchools = async (currentItems=loadingStatus.items, page=loadingStatus.page, currentFilters=filters) => {
     if(loadingStatus.loading) return;
@@ -77,6 +79,16 @@ const Home = () => {
     disabled: !!loadingStatus.error,
   });
 
+  if(filtersOpen) {
+    return (
+      <Filter 
+        setFiltersOpen={setFiltersOpen}
+        filters={filters}
+        setFilters={setFilters}
+      />
+    )
+  }
+
   if(selectedSchool) {
     return (
       <SchoolDetails
@@ -95,6 +107,7 @@ const Home = () => {
       onSearch={onSearch}
       sentryRef={sentryRef}
       setSelectedSchool={setSelectedSchool}
+      setFiltersOpen={setFiltersOpen}
     />
   )
 

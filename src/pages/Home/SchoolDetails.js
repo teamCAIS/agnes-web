@@ -11,7 +11,8 @@ const SchoolDetails = ({setSelectedSchool}) => {
         <div className="app-bar">
           <h1>Nome da Escola</h1>
           <ImageButton 
-            icon={back} 
+            icon={back}
+            size="16px"
             className="back-btn"
             onClick={() => setSelectedSchool(null)}
           >

@@ -1,8 +1,8 @@
 import { StyledHome } from "./HomePage.styles";
-import { ButtonPrimary } from "../../components/Button";
+import { ButtonLabel, ButtonPrimary, ImageButton } from "../../components/Button";
 import SchoolCard from "../../components/SchoolCard/SchoolCard";
 import { Label, TextInput } from "../../components/Inputs";
-
+import filter from "../../assets/filter.png"
 
 const HomePage = ({
     loadingStatus,
@@ -12,6 +12,7 @@ const HomePage = ({
     onSearch,
     sentryRef,
     setSelectedSchool,
+    setFiltersOpen,
   }) => {
 
   return (
@@ -22,13 +23,25 @@ const HomePage = ({
       </h1>
       
       </header>
-      <Label>
-        Pesquise uma escola
-        <TextInput 
-          value={filters.search}
-          onChange={e => setFilters({...filters, search: e.target.value})}
-        />
-      </Label>
+      <div className="search-field">
+        <ImageButton
+          icon={filter}
+          background
+          size="32px"
+          onClick={() => setFiltersOpen(true)}
+        >
+          <ButtonLabel>filtros</ButtonLabel>
+        </ImageButton>
+        <Label>
+          Pesquise uma escola
+          
+          <TextInput 
+            value={filters.search}
+            onChange={e => setFilters({...filters, search: e.target.value})}
+          />
+          
+        </Label>
+      </div>
       <Label>
         Usar sua localização
         <input type="checkbox" onChange={onChangeUseLocation} />
