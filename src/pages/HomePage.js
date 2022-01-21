@@ -41,7 +41,24 @@ const HomePage = () => {
     }
   }
 
-  useEffect(() => {
+  const onChangeUseLocation = (e) => {
+    const shouldUseLocation = e.target.checked;
+    console.log(shouldUseLocation);
+    if(!shouldUseLocation) {
+      setFilters({...filters,coordinates: ""})
+      return;
+    }
+    if(filters.coordinates) return;
+    if("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const coordinates = `${position.coords.latitude},${position.coords.longitude}`
+        setFilters({...filters,coordinates});
+        loadSchools([], 1, {...filters,coordinates});
+      })
+    }
+  }
+
+  /* useEffect(() => {
     if("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         const coordinates = `${position.coords.latitude},${position.coords.longitude}`
@@ -49,7 +66,7 @@ const HomePage = () => {
         loadSchools([], 1, {...filters,coordinates});
       })
     }
-  }, [])
+  }, []) */
 
   const onSearch = async () => {
     setLoadingStatus({...initialStatus})
@@ -67,24 +84,20 @@ const HomePage = () => {
     <StyledHome>
       <header>
       <h1>
-        {!loadingStatus.hasStarted ? (
-          <span>Bem-vinde ao{" "}</span>
-        ) : null}
         projeto AGNES
       </h1>
-      {!loadingStatus.hasStarted ? (
-        <p>
-        Nós queremos ajudar você e outros estudantes a encontrar escolas que estejam melhor preparadas para apoiar a causa trans. Abaixo você pode buscar por escolas e ver mais informações sobre elas
-        </p>
-      ) : null}
       
       </header>
       <Label>
-        Usar nome da escola
+        Pesquise uma escola
         <TextInput 
           value={filters.search}
           onChange={e => setFilters({...filters, search: e.target.value})}
         />
+      </Label>
+      <Label>
+        Usar sua localização
+        <input type="checkbox" onChange={onChangeUseLocation} />
       </Label>
       <ButtonPrimary onClick={onSearch}>Buscar</ButtonPrimary>
       <section>

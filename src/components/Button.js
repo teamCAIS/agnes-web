@@ -41,7 +41,7 @@ export const ButtonPrimary = styled(Button)`
 export const ImageButton = styled(Button)`
   width: 1.5rem;
   height: 1.5rem;
-  background-image: ${({img}) => `url(${img});`}
+  background-image: ${({icon}) => `url(${icon});`}
   background-repeat: no-repeat;
   background-position: center;
 `;
