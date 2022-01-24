@@ -14,10 +14,17 @@ const initialStatus = {
   hasStarted: false,
 }
 
+const initialFilters = {
+  radius: 5,
+  search: "",
+  grade: 0,
+  tags: "123,234",
+}
+
 const Home = () => {
 
   const [loadingStatus, setLoadingStatus] = useState(initialStatus);
-  const [filters, setFilters] = useState({radius:5, search: ""});
+  const [filters, setFilters] = useState(initialFilters);
   const [selectedSchool, setSelectedSchool] = useState(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
