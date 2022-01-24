@@ -4,6 +4,7 @@ import useInfiniteScroll from 'react-infinite-scroll-hook';
 import HomePage from "./HomePage";
 import SchoolDetails from "./SchoolDetails";
 import Filter from "./Filter";
+import { getTags } from "../../api/tags";
 
 const initialStatus = {
   loading: false,
@@ -18,7 +19,7 @@ const initialFilters = {
   radius: 5,
   search: "",
   grade: 0,
-  tags: "123,234",
+  tags: "",
 }
 
 const Home = () => {
@@ -27,6 +28,19 @@ const Home = () => {
   const [filters, setFilters] = useState(initialFilters);
   const [selectedSchool, setSelectedSchool] = useState(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    const getTagsInfo = async () => {
+      try {
+        const result = await getTags();
+        setTags(result.data)
+      } catch(error) {
+        console.warn(error);
+      }
+    }
+    getTagsInfo();
+  }, [])
 
   const loadSchools = async (currentItems=loadingStatus.items, page=loadingStatus.page, currentFilters=filters) => {
     if(loadingStatus.loading) return;
@@ -92,6 +106,7 @@ const Home = () => {
         setFiltersOpen={setFiltersOpen}
         filters={filters}
         setFilters={setFilters}
+        tags={tags}
       />
     )
   }

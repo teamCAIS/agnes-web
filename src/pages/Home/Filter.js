@@ -3,11 +3,13 @@ import { SmallTag, Tag, Tags } from "../../components/Tags";
 import { StyledFilter } from "./Filter.styles";
 import back from '../../assets/back.png'
 import { Label } from "../../components/Inputs";
+import React from "react";
 
 const Filter = ({
     setFiltersOpen,
     filters,
     setFilters,
+    tags,
   }) => {
 
   const onChangeGrade = e => {
@@ -16,6 +18,31 @@ const Filter = ({
 
   const onChangeRadius = e => {
     setFilters({...filters, radius: e.target.value});
+  }
+
+  const isTagChecked = (tagId) => {
+    return filters.tags.includes(tagId);
+  }
+
+  const onChangeTags = e => {
+    const tagId = e.target.value;
+    const checked = isTagChecked(tagId);
+    if(!filters.tags) {
+      setFilters({ ...filters, tags: `${tagId}` });
+      return;
+    }
+    if(checked) {
+      //remove tagId from string
+      const tagsArray = filters.tags.split(",");
+      const tagsString = tagsArray
+        .filter(tag => tag !== tagId)
+        .join(",");
+      setFilters({ ...filters, tags: tagsString });
+      return;
+    }
+    //add tagIg at the end of the string
+    const tagsString = `${filters.tags},${tagId}`;
+    setFilters({ ...filters, tags: tagsString });
   }
 
   return (
@@ -74,8 +101,15 @@ const Filter = ({
         <section>
           <Label>
             Tags
-            <input type="checkbox" /> Banheiro inclusivo
-            <input type="checkbox" /> Nome social
+            {tags.map(tag => (
+              <React.Fragment key={tag._id}>
+                <input type="checkbox" 
+                  value={tag._id}
+                  checked={isTagChecked(tag._id)}
+                  onChange={onChangeTags}
+                /> {tag.name}
+              </React.Fragment>
+            ))}
             {/* <Tags>
               <Tag>Banheiro inclusivo</Tag>
               <Tag>Nome social</Tag>
