@@ -13,6 +13,8 @@ const HomePage = ({
     sentryRef,
     setSelectedSchool,
     setFiltersOpen,
+    currentFilters,
+    cleanFilters,
   }) => {
 
   return (
@@ -46,6 +48,11 @@ const HomePage = ({
         Usar sua localização
         <input type="checkbox" onChange={onChangeUseLocation} />
       </Label>
+      {currentFilters.isFiltering ? (
+        Object.entries(currentFilters.filters).map(([key, value]) => (
+          <p>{key}: {value}</p>
+        ))
+      ) : null}
       <ButtonPrimary onClick={onSearch}>Buscar</ButtonPrimary>
       <section>
         <h2>Lista de escolas</h2>

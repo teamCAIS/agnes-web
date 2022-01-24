@@ -22,6 +22,15 @@ const initialFilters = {
   tags: "",
 }
 
+const initialCurrentFilters = {
+  isFiltering: false,
+  filters: {
+    radius: 5,
+    grade: 0,
+    tags: "",
+  }
+}
+
 const Home = () => {
 
   const [loadingStatus, setLoadingStatus] = useState(initialStatus);
@@ -29,6 +38,15 @@ const Home = () => {
   const [selectedSchool, setSelectedSchool] = useState(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [tags, setTags] = useState([]);
+  // add current filters state
+  const [currentFilters, setCurrentFilters] = useState(initialCurrentFilters);
+
+  console.log(currentFilters);
+
+  const cleanFilters = () => {
+    setCurrentFilters(initialCurrentFilters);
+    setFilters(initialFilters);
+  }
 
   useEffect(() => {
     const getTagsInfo = async () => {
@@ -106,7 +124,10 @@ const Home = () => {
         setFiltersOpen={setFiltersOpen}
         filters={filters}
         setFilters={setFilters}
+        setCurrentFilters={setCurrentFilters}
+        currentFilters={currentFilters}
         tags={tags}
+        loadSchools={loadSchools}
       />
     )
   }
@@ -130,6 +151,8 @@ const Home = () => {
       sentryRef={sentryRef}
       setSelectedSchool={setSelectedSchool}
       setFiltersOpen={setFiltersOpen}
+      currentFilters={currentFilters}
+      cleanFilters={cleanFilters}
     />
   )
 
