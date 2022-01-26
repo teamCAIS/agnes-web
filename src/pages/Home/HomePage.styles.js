@@ -9,16 +9,14 @@ export const StyledHome = styled.main`
     position: fixed;
     background-color: var(--color-base);
     width: 100%;
-    padding: var(--app-margin);
-  }
-
-  h1 {
-    margin-bottom: 1rem;
+    padding: 18px var(--app-margin);
+    z-index: 99;
+    /*box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);*/
   }
 
   .content {
     padding: var(--app-margin);
-    padding-top: calc(4*var(--app-margin));
+    padding-top: calc(3*var(--app-margin));
   }
 
   section {

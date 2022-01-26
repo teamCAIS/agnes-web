@@ -1,8 +1,10 @@
 import { StyledHome } from "./HomePage.styles";
 import { ButtonLabel, ButtonPrimary, ImageButton } from "../../components/Button";
 import SchoolCard from "../../components/SchoolCard/SchoolCard";
-import { Label, TextInput } from "../../components/Inputs";
+import { Label, TextInput, ToggleSwitch } from "../../components/Inputs";
 import filter from "../../assets/filter.png"
+import locationGray from "../../assets/location-gray.png";
+import locationIcon from "../../assets/location.png";
 
 const HomePage = ({
     loadingStatus,
@@ -44,10 +46,12 @@ const HomePage = ({
           
         </Label>
       </div>
-      <Label>
-        Usar sua localização
+      <ToggleSwitch icon={locationGray} iconChecked={locationIcon}>
         <input type="checkbox" onChange={onChangeUseLocation} />
-      </Label>
+        <span>Usar sua localização
+          <span className="slider"></span>
+        </span>
+      </ToggleSwitch>
       {currentFilters.isFiltering ? (
         Object.entries(currentFilters.filters).map(([key, value]) => (
           <p>{key}: {value}</p>
