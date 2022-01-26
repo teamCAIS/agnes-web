@@ -30,7 +30,7 @@ const StyledCard = styled.li`
         ${iconBeforeStyles}
         width: 0.75rem;
         height: 0.75rem;
-        margin-right: 0.5rem;
+        margin-right: 0.375rem;
       }
     }
 
@@ -71,13 +71,15 @@ const SchoolCard = ({info, location, setSelectedSchool}) => {
         ) : null}
         <li className="grade">4,5</li>
       </ul>
-      <ul className="tags">
-      {info.tags.slice(0, 2).map(tag => (
-        <Tag key={`tag=${tag._id}&school=${info._id}`}>
-          Nome Social
-        </Tag>
-      ))}
-      </ul>
+      {info.tags.length > 0 ? (
+        <ul className="tags">
+        {info.tags.slice(0, 2).map(tag => (
+          <Tag key={`tag=${tag._id}&school=${info._id}`}>
+            Nome Social
+          </Tag>
+        ))}
+        </ul>
+      ) : null}
     </StyledCard>
     // </Link>
   )

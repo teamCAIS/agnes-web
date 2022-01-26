@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import { iconBeforeStyles } from '../../styles/mixins';
+import star from '../../assets/star-gray.png';
+import distance from '../../assets/distance-gray.png';
+import tags from '../../assets/tags-gray.png';
 
 export const StyledHome = styled.main`
   
@@ -25,7 +29,11 @@ export const StyledHome = styled.main`
     margin-top: 1.5rem;
   }
 
-  h2, h3 {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
     font-size: 1.125rem;
   }
 
@@ -37,6 +45,35 @@ export const StyledHome = styled.main`
       right: 9px;
       bottom: 9px;
     }
+  }
+
+  .filters {
+    margin: 0.5rem 0;
+    li {
+      color: var(--color-gray);
+      &::before {
+        ${iconBeforeStyles}
+        width: 0.75rem;
+        height: 0.75rem;
+        margin-right: 0.375rem;
+      }
+      b {
+        color: inherit;
+      }
+    }
+    .grade::before {
+      background-image: url(${star});
+    }
+    .radius::before {
+      background-image: url(${distance});
+    }
+    .tags::before {
+      background-image: url(${tags});
+    }
+  }
+
+  .search-btn {
+    margin-top: 1rem;
   }
 
 `;

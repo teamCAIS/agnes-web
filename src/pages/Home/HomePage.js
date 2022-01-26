@@ -1,10 +1,37 @@
 import { StyledHome } from "./HomePage.styles";
-import { ButtonLabel, ButtonPrimary, ImageButton } from "../../components/Button";
+import { ButtonLabel, ButtonPrimary, ImageButton, LinkButton } from "../../components/Button";
 import SchoolCard from "../../components/SchoolCard/SchoolCard";
 import { Label, TextInput, ToggleSwitch } from "../../components/Inputs";
 import filter from "../../assets/filter.png"
 import locationGray from "../../assets/location-gray.png";
 import locationIcon from "../../assets/location.png";
+
+const renderFilter = (key, value, locationEnabled, tags) => {
+  let label = "Nota";
+  let content = value;
+  if(key === "radius") {
+    label = "Distância máxima";
+    content += "km"
+    if(!locationEnabled) return null;
+  }
+
+  if(key === "tags") {
+    label = "Tags";
+    let tagsArray = value.split(",");
+    tagsArray = tagsArray.map(item => {
+      const currentTag = tags.find(tag => tag._id === item);
+      return currentTag.name;
+    })
+    content = tagsArray.join(", ");
+  }
+
+  return (
+    <li className={`${key}`}>
+      <b>{label}:</b>{" "}{content}
+    </li>
+  )
+
+}
 
 const HomePage = ({
     loadingStatus,
@@ -17,6 +44,7 @@ const HomePage = ({
     setFiltersOpen,
     currentFilters,
     cleanFilters,
+    tags,
   }) => {
 
   return (
@@ -52,12 +80,21 @@ const HomePage = ({
           <span className="slider"></span>
         </span>
       </ToggleSwitch>
+
+      
       {currentFilters.isFiltering ? (
-        Object.entries(currentFilters.filters).map(([key, value]) => (
-          <p>{key}: {value}</p>
-        ))
+        <>
+        <h2>Filtros aplicados</h2>
+        <ul className="filters">
+          {Object.entries(currentFilters.filters)
+            .map(([key, value]) => 
+              renderFilter(key,value, filters.coordinates, tags))}
+        </ul>
+        <LinkButton onClick={cleanFilters}>Limpar filtros</LinkButton>
+        </>
       ) : null}
-      <ButtonPrimary onClick={onSearch}>Buscar</ButtonPrimary>
+
+      <ButtonPrimary className="search-btn" onClick={onSearch}>Buscar</ButtonPrimary>
       <section>
         <h2>Lista de escolas</h2>
         <ul>

@@ -65,3 +65,10 @@ export const ButtonLabel = styled.span`
   overflow: hidden;
   display: block;
 `;
+
+export const LinkButton = styled(Button)`
+  color: var(--color-link);
+  margin: 0.5rem auto;
+  display: block;
+  text-decoration: underline;
+`

@@ -153,6 +153,7 @@ const Home = () => {
       setFiltersOpen={setFiltersOpen}
       currentFilters={currentFilters}
       cleanFilters={cleanFilters}
+      tags={tags}
     />
   )
 
