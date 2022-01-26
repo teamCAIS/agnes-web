@@ -135,7 +135,7 @@ const Home = () => {
   if(selectedSchool) {
     return (
       <SchoolDetails
-        selectedSchool={selectedSchool}
+        school={selectedSchool}
         setSelectedSchool={setSelectedSchool}
       />
     )
