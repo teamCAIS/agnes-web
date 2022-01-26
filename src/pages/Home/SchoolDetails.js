@@ -1,10 +1,10 @@
 import { ButtonLabel, ImageButton } from "../../components/Button";
-import { SmallTag, Tags } from "../../components/Tags";
+import { getTagBG, getTagName, SmallTag, Tags } from "../../components/Tags";
 import { StyledSchoolDetails } from "./SchoolDetails.styles";
 import back from '../../assets/back.png'
 import CommentCard from "../../components/CommentCard/CommentCard";
 
-const SchoolDetails = ({school,setSelectedSchool}) => {
+const SchoolDetails = ({school,setSelectedSchool,tags}) => {
 
   return (
     <StyledSchoolDetails>
@@ -23,8 +23,8 @@ const SchoolDetails = ({school,setSelectedSchool}) => {
       <div className="map">
           <ul className="tags">
             {school.tags.map(tag => (
-              <SmallTag>
-                Uso do Banheiro
+              <SmallTag bg={getTagBG(tag, tags)}>
+                {getTagName(tag, tags)}
               </SmallTag>
             ))}
           </ul>      
@@ -36,7 +36,7 @@ const SchoolDetails = ({school,setSelectedSchool}) => {
           <h2>Endereço</h2>
           <p className="address">{school.address}</p>
           <div className="overall-grade">
-            4,5
+            {school.grade}
           </div>
         </section>
 

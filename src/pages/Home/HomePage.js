@@ -17,6 +17,7 @@ const renderFilter = (key, value, locationEnabled, tags) => {
 
   if(key === "tags") {
     label = "Tags";
+    if(value === "") return null;
     let tagsArray = value.split(",");
     tagsArray = tagsArray.map(item => {
       const currentTag = tags.find(tag => tag._id === item);
@@ -104,6 +105,7 @@ const HomePage = ({
               location={filters.coordinates ? filters.coordinates.split(",") : null}
               key={`school-${school._id}`}
               setSelectedSchool={setSelectedSchool}
+              tags={tags}
             >
             </SchoolCard>
           ))}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getDistance } from "../../helpers/location";
 import { iconBeforeStyles } from "../../styles/mixins";
-import { Tag, Tags } from "../Tags";
+import { Tag, Tags, getTagName, getTagBG } from "../Tags";
 import distanceIcon from '../../assets/distance.png';
 import starIcon from '../../assets/star.png';
 
@@ -13,6 +13,7 @@ const StyledCard = styled.li`
   box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.25);
   white-space: nowrap;
   overflow: hidden;
+  cursor: pointer;
 
   h3 {
     text-overflow: ellipsis;
@@ -51,7 +52,7 @@ const StyledCard = styled.li`
   
 `;
 
-const SchoolCard = ({info, location, setSelectedSchool}) => {
+const SchoolCard = ({info, location, setSelectedSchool, tags}) => {
 
   let distance = null;
 
@@ -74,8 +75,11 @@ const SchoolCard = ({info, location, setSelectedSchool}) => {
       {info.tags.length > 0 ? (
         <ul className="tags">
         {info.tags.slice(0, 2).map(tag => (
-          <Tag key={`tag=${tag._id}&school=${info._id}`}>
-            Nome Social
+          <Tag 
+            key={`tag=${tag._id}&school=${info._id}`}
+            bg={getTagBG(tag, tags)}
+          >
+            {getTagName(tag, tags)}
           </Tag>
         ))}
         </ul>

@@ -162,7 +162,6 @@ export const TagInput = styled.label`
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 16px;
-  background: var(--color-line);
   padding: 4px 8px;
   width: fit-content;
   background: ${({bg}) => bg ? bg : 'var(--color-line)'};

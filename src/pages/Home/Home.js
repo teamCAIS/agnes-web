@@ -41,8 +41,6 @@ const Home = () => {
   // add current filters state
   const [currentFilters, setCurrentFilters] = useState(initialCurrentFilters);
 
-  console.log(currentFilters);
-
   const cleanFilters = () => {
     setCurrentFilters(initialCurrentFilters);
     setFilters(initialFilters);
@@ -137,6 +135,7 @@ const Home = () => {
       <SchoolDetails
         school={selectedSchool}
         setSelectedSchool={setSelectedSchool}
+        tags={tags}
       />
     )
   }
