@@ -2,8 +2,10 @@ import { ButtonLabel, ButtonPrimary, ImageButton } from "../../components/Button
 import { SmallTag, Tag, Tags } from "../../components/Tags";
 import { StyledFilter } from "./Filter.styles";
 import back from '../../assets/back.png'
-import { Label } from "../../components/Inputs";
+import { Label, RangeSlider, StarInput, TagInput } from "../../components/Inputs";
 import React, { useEffect, useState } from "react";
+import star from '../../assets/star2.png'
+import starOutline from '../../assets/star-outline.png'
 
 const Filter = ({
     setFiltersOpen,
@@ -81,68 +83,88 @@ const Filter = ({
           <ButtonLabel>voltar</ButtonLabel>
         </ImageButton>
       </header>
-      <main>
-        <p>Você pode refinar sua busca ajustando os filtros abaixo</p>
+      <div>
+        <p className="info-text">Você pode refinar sua busca ajustando os filtros abaixo</p>
         <section>
           <Label>
             Distância máxima da sua casa
-            <input type="range"
-              value={applyingFilters.radius}
-              onChange={onChangeRadius}
-              min={1}
-              max={50}
-              step={1}
-            />
-            {applyingFilters.radius}
+            <RangeSlider>
+              <input type="range"
+                value={applyingFilters.radius}
+                onChange={onChangeRadius}
+                min={1}
+                max={50}
+                step={1}
+              />
+            </RangeSlider>
+            <div className="selected-distance">
+              {applyingFilters.radius}km
+            </div>
           </Label>
         </section>
-        <section>
-          <Label>
-            Nota mínima
-            <input type="radio" name="grade" value="1"
-              checked={applyingFilters.grade === "1"}
-              onChange={onChangeGrade}
-            />1
-            <input type="radio" name="grade" value="2" 
-              checked={applyingFilters.grade === "2"}
-              onChange={onChangeGrade}
-            />2
-            <input type="radio" name="grade" value="3" 
-              checked={applyingFilters.grade === "3"}
-              onChange={onChangeGrade}
-            />3
-            <input type="radio" name="grade" value="4" 
-              checked={applyingFilters.grade === "4"}
-              onChange={onChangeGrade}
-            />4
-            <input type="radio" name="grade" value="5" 
-              checked={applyingFilters.grade === "5"}
-              onChange={onChangeGrade}
-            />5
-          </Label>
+        <section className="form-section">
+          Nota mínima
+          <div className="star-group">
+              <StarInput icon={Number(applyingFilters.grade) >= 1 ? star : starOutline}>
+                <input type="radio" name="grade" value="1"
+                  checked={applyingFilters.grade === "1"}
+                  onChange={onChangeGrade}
+                />
+              <ButtonLabel>1</ButtonLabel>
+              </StarInput>
+              <StarInput icon={applyingFilters.grade >= 2 ? star : starOutline}>
+              <input type="radio" name="grade" value="2" 
+                checked={applyingFilters.grade === "2"}
+                onChange={onChangeGrade}
+              /><ButtonLabel>2</ButtonLabel>
+              </StarInput>
+              <StarInput icon={applyingFilters.grade >= 3 ? star : starOutline}>
+              <input type="radio" name="grade" value="3" 
+                checked={applyingFilters.grade === "3"}
+                onChange={onChangeGrade}
+              /><ButtonLabel>3</ButtonLabel>
+              </StarInput>
+              <StarInput icon={applyingFilters.grade >= 4 ? star : starOutline}>
+              <input type="radio" name="grade" value="4" 
+                checked={applyingFilters.grade === "4"}
+                onChange={onChangeGrade}
+              /><ButtonLabel>4</ButtonLabel>
+              </StarInput>
+              <StarInput icon={applyingFilters.grade >= 5 ? star : starOutline}>
+              <input type="radio" name="grade" value="5" 
+                checked={applyingFilters.grade === "5"}
+                onChange={onChangeGrade}
+              /><ButtonLabel>5</ButtonLabel>
+              </StarInput>
+          </div>
         </section>
-        <section>
-          <Label>
+        <section className="form-section tag-section">
             Tags
-            {tags.map(tag => (
+            <div className="tag-group">
+
+            {tags.map((tag, index) => (
               <React.Fragment key={tag._id}>
+              <TagInput
+                bg={isTagChecked(tag._id) ? tag.color : null}
+              >
                 <input type="checkbox" 
                   value={tag._id}
                   checked={isTagChecked(tag._id)}
                   onChange={onChangeTags}
                 /> {tag.name}
+              </TagInput>
+              {(index + 1) % 3 === 0 ? (<br/>) : null}
               </React.Fragment>
             ))}
-            {/* <Tags>
-              <Tag>Banheiro inclusivo</Tag>
-              <Tag>Nome social</Tag>
-            </Tags> */}
-          </Label>
+            </div>
+
         </section>
         <footer>
-          <ButtonPrimary onClick={applyFilters}>Aplicar</ButtonPrimary>
+          <ButtonPrimary onClick={applyFilters} className="submit-btn">
+            Aplicar
+          </ButtonPrimary>
         </footer>
-      </main>
+      </div>
     </StyledFilter>
   )
 }

@@ -69,7 +69,7 @@ const SchoolCard = ({info, location, setSelectedSchool}) => {
         {distance !== null ? (
           <li className="distance">{distance}km</li>
         ) : null}
-        <li className="grade">4,5</li>
+        <li className="grade">{info.grade}</li>
       </ul>
       {info.tags.length > 0 ? (
         <ul className="tags">
