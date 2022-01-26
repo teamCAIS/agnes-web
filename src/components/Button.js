@@ -36,7 +36,7 @@ export const ButtonPrimary = styled(Button)`
   border-radius: 1rem;
   padding: 0.875rem;
   background: var(--color-primary);
-  color: var(--color-base);
+  color: var(--color-text-accent);
   font-weight: 600;
 `;
 

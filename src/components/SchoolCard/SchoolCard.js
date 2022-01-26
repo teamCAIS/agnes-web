@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getDistance } from "../../helpers/location";
+import { iconBeforeStyles } from "../../styles/mixins";
 import { Tag, Tags } from "../Tags";
+import distanceIcon from '../../assets/distance.png';
+import starIcon from '../../assets/star.png';
 
 const StyledCard = styled.li`
   margin: 1rem 0;
@@ -23,11 +26,27 @@ const StyledCard = styled.li`
     margin-top: 0.5rem;
     li {
       margin-right: 1rem;
+      &::before {
+        ${iconBeforeStyles}
+        width: 0.75rem;
+        height: 0.75rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .grade::before {
+      background-image: url(${starIcon});
+    }
+    .distance::before {
+      background-image: url(${distanceIcon});
     }
   }
 
   .tags {
     margin-top: 1rem;
+    li {
+      margin-top: 0.5rem;
+    }
   }
   
 `;
@@ -48,18 +67,17 @@ const SchoolCard = ({info, location, setSelectedSchool}) => {
       <h3>{info.name.toLowerCase()}</h3>
       <ul className="info">
         {distance !== null ? (
-          <li>{distance}km</li>
+          <li className="distance">{distance}km</li>
         ) : null}
-        <li>4,5</li>
+        <li className="grade">4,5</li>
       </ul>
-      <Tags className="tags">
-        <Tag>
+      <ul className="tags">
+      {info.tags.slice(0, 2).map(tag => (
+        <Tag key={`tag=${tag._id}&school=${info._id}`}>
           Nome Social
         </Tag>
-        <Tag>
-          Banheiro inclusivo
-        </Tag>
-      </Tags>
+      ))}
+      </ul>
     </StyledCard>
     // </Link>
   )

@@ -10,6 +10,7 @@ export const Tag = styled.li`
   border-radius: 16px;
   background: var(--color-line);
   padding: 4px 8px;
+  width: fit-content;
 `;
 
 export const SmallTag = styled(Tag)`
