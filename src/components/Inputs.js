@@ -14,4 +14,8 @@ export const TextInput = styled.input`
   background: transparent;
   color: var(--color-text);
   border: 1px solid var(--color-gray);
+
+  &:focus {
+    border-color: var(--color-text-accent);
+  }
 `;

@@ -45,7 +45,7 @@ export const ImageButton = styled(Button)`
   height: ${({size}) => size ? size : `1.5rem`};
   border-radius: 8px;
   padding: ${({background}) => background ? '6px' : 'unset'};
-  background-color: ${({background}) => background ? 'var(--color-primary)' : 'transparent'};
+  background: ${({background}) => background ? 'var(--color-primary)' : 'transparent'};
   display: flex;
   &::before {
     flex:1;

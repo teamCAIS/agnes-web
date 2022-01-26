@@ -3,10 +3,13 @@
 :root {
   --app-margin: 1.5rem;
   --color-base: #fff;
+  --color-base-transparent: rgba(255, 255, 255, 0.7);
   --color-text: #313131;
-  --color-primary: #313131;
+  --color-text-accent: #391E53;
+  --color-primary: linear-gradient(91.93deg, #9796F0 2.74%, #FBC7D4 100%);
   --color-line: rgba(49, 49, 49, 0.25);
   --color-gray: #707070;
+  --color-link: #5A42D2;
 }
 
 * {
@@ -380,10 +383,13 @@ ul {
   margin: 0;
 }
 
-h1, h2, h3 {
-  margin: 0;
-}
 
 body * {
   font-family: 'Work Sans', sans-serif;
+  color: var(--color-text);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  color: var(--color-text-accent);
 }

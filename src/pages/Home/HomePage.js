@@ -20,11 +20,11 @@ const HomePage = ({
   return (
     <StyledHome>
       <header>
-      <h1>
-        projeto AGNES
-      </h1>
-      
+        <h1>
+          projeto AGNES
+        </h1>
       </header>
+      <div className="content">
       <div className="search-field">
         <ImageButton
           icon={filter}
@@ -71,6 +71,7 @@ const HomePage = ({
           <p ref={sentryRef}>Carregando...</p>
         )}
       </section>
+      </div>
     </StyledHome>
   )
 
