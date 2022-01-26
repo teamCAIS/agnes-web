@@ -54,21 +54,14 @@ const StyledCard = styled.li`
 
 const SchoolCard = ({info, location, setSelectedSchool, tags}) => {
 
-  let distance = null;
-
-  if(location) {
-    const [lat1, lon1] = location
-    const [lon2, lat2] = info.location.coordinates.reverse();
-    distance = getDistance(lat1, lon1, lat2, lon2).toFixed(1).replace(".", ",");
-  }
 
   return (
     // <Link to="/escola/detalhes">
     <StyledCard onClick={() => setSelectedSchool(info)}>
       <h3>{info.name.toLowerCase()}</h3>
       <ul className="info">
-        {distance !== null ? (
-          <li className="distance">{distance}km</li>
+        {location ? (
+          <li className="distance">{info.distance}km</li>
         ) : null}
         <li className="grade">{info.grade}</li>
       </ul>
