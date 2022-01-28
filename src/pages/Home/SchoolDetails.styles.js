@@ -22,6 +22,7 @@ export const StyledSchoolDetails = styled.main`
     justify-content: left;
     background: var(--color-base-transparent);
     position: fixed;
+    z-index: 1;
 
     .back-btn {
       margin-right: var(--app-margin);
@@ -33,9 +34,19 @@ export const StyledSchoolDetails = styled.main`
     background-color: var(--color-line);
     display: flex;
     align-items: end;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
   }
 
   .tags {
+    z-index: 1;
     padding: 1rem;
     overflow: auto;
     white-space: nowrap;
