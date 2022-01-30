@@ -30,6 +30,7 @@ const SchoolDetails = ({school,setSelectedSchool,tags}) => {
       <div className="map">
         <a href={getMapLink(school.location.coordinates[1], school.location.coordinates[0])}
           target="_blank"
+          rel="noreferrer"
         >
         <img 
           src={getMapUrl(school.location.coordinates[1], school.location.coordinates[0])}
