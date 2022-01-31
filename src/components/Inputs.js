@@ -4,7 +4,12 @@ import { Button, ImageButton } from "./Button";
 
 export const Label = styled.label`
   font-weight: 600;
+  font-family: 'Poppins', sans-serif;
   margin: 1rem 0;
+  span.text {
+    margin-left: 1rem;
+    font: inherit;
+  }
 `;
 
 export const TextInput = styled.input`
@@ -13,7 +18,7 @@ export const TextInput = styled.input`
   border-radius: 0.5rem;
   padding: 15px 16px 14px 16px;
   margin: 0.25rem 0 1rem 0;
-  background: transparent;
+  background-color: var(--color-base);
   color: var(--color-text);
   border: 1px solid var(--color-gray);
 

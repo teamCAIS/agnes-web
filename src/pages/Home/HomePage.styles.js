@@ -11,11 +11,17 @@ export const StyledHome = styled.main`
 
   header {
     position: fixed;
-    background-color: var(--color-base);
     width: 100%;
     padding: 18px var(--app-margin);
     z-index: 99;
     /*box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);*/
+  }
+
+  h1 {
+    span {
+      color: inherit;
+      font-weight: 200;
+    }
   }
 
   .content {
@@ -27,10 +33,6 @@ export const StyledHome = styled.main`
     border-top: 1px solid var(--color-line);
     padding-top: 1.125rem;
     margin-top: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
   }
 
   h3 {

@@ -27,14 +27,14 @@ export const Button = styled.button`
   }
 
   cursor: pointer;
-
+  font-family: 'Poppins', sans-serif;
 `;
 
 export const ButtonPrimary = styled(Button)`
   display: block;
   width: 100%;
   border-radius: 1rem;
-  padding: 0.875rem;
+  padding: 0.75rem;
   background: var(--color-primary);
   color: var(--color-text-accent);
   font-weight: 600;
@@ -45,7 +45,7 @@ export const ImageButton = styled(Button)`
   height: ${({size}) => size ? size : `1.5rem`};
   border-radius: 8px;
   padding: ${({background}) => background ? '6px' : 'unset'};
-  background: ${({background}) => background ? 'var(--color-primary)' : 'transparent'};
+  background: ${({background}) => background ? 'var(--color-text-accent)' : 'transparent'};
   display: flex;
   &::before {
     flex:1;

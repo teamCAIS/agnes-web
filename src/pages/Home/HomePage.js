@@ -52,7 +52,7 @@ const HomePage = ({
     <StyledHome>
       <header>
         <h1>
-          projeto AGNES
+          AGNES <span>escolas</span>
         </h1>
       </header>
       <div className="content">
@@ -66,7 +66,7 @@ const HomePage = ({
           <ButtonLabel>filtros</ButtonLabel>
         </ImageButton>
         <Label>
-          Pesquise uma escola
+          <span className="text">Buscar uma escola</span>
           
           <TextInput 
             value={filters.search}

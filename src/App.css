@@ -401,3 +401,8 @@ h1, h2, h3 {
   color: var(--color-text-accent);
   font-family: 'Poppins', sans-serif;
 }
+
+h2 {
+  margin: 0 1rem;
+  font-size: 1.25rem;
+}
