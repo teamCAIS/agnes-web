@@ -47,6 +47,7 @@ export const ImageButton = styled(Button)`
   padding: ${({background}) => background ? '6px' : 'unset'};
   background: ${({background}) => background ? 'var(--color-text-accent)' : 'transparent'};
   display: flex;
+  align-items: stretch;
   &::before {
     flex:1;
     content: "";

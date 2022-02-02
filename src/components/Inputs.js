@@ -117,10 +117,13 @@ export const RangeSlider = styled.div`
   input::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 6px; /* Set a specific slider handle width */
-    height: 6px; /* Slider handle height */
-    background: var(--color-link);
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: var(--color-text-accent);
     cursor: pointer; /* Cursor on hover */
+    border: none;
   }
   
   input::-moz-range-thumb {
