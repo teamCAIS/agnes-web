@@ -4,6 +4,7 @@ import Home from './pages/Home/Home';
 import LoginPage from './pages/Login/LoginPage';
 import UserContext from './contexts/UserContext';
 import { useEffect, useState } from 'react';
+import EvaluationPage from './pages/Evaluation/EvaluationPage';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     <HashRouter>
       <UserContext.Provider value={{userInfo, setUserInfo}}>
         <Routes>
+          <Route path="/avaliar" element={<EvaluationPage />} />
           <Route path="/entrar" element={<LoginPage />} />
           <Route path="/" element={<Home />} />
           

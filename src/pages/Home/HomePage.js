@@ -2,9 +2,13 @@ import { StyledHome } from "./HomePage.styles";
 import { ButtonLabel, ButtonPrimary, ImageButton, LinkButton } from "../../components/Button";
 import SchoolCard from "../../components/SchoolCard/SchoolCard";
 import { Label, TextInput, ToggleSwitch } from "../../components/Inputs";
-import filter from "../../assets/filter.png"
+import filter from "../../assets/filter.png";
+import userIcon from "../../assets/user.png";
 import locationGray from "../../assets/location-gray.png";
 import locationIcon from "../../assets/location.png";
+import { Link } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
+import { useContext } from "react";
 
 const renderFilter = (key, value, locationEnabled, tags) => {
   let label = "Nota";
@@ -56,12 +60,23 @@ const HomePage = ({
     tags,
   }) => {
 
+  const { userInfo } = useContext(UserContext);
+
   return (
     <StyledHome>
       <header>
         <h1>
           AGNES <span>escolas</span>
         </h1>
+        <Link to="/entrar">
+          <ImageButton
+            icon={userIcon}
+            size="32px"
+            onClick={() => {}}
+          >
+            <ButtonLabel>entrar</ButtonLabel>
+          </ImageButton>
+        </Link>
       </header>
       <div className="content">
       <div className="search-field">
@@ -104,6 +119,21 @@ const HomePage = ({
       ) : null}
 
       <ButtonPrimary className="search-btn" onClick={onSearch}>Buscar</ButtonPrimary>
+
+      {userInfo && userInfo.school && (
+        <section>
+          <h2>Minha escola</h2>
+          <SchoolCard 
+            info={userInfo.school}
+            location={filters.coordinates ? filters.coordinates.split(",") : null}
+            setSelectedSchool={setSelectedSchool}
+            tags={tags}
+            mySchool
+          >
+          </SchoolCard>
+        </section>
+      )}
+
       <section>
         <h2>Lista de escolas</h2>
         <ul>

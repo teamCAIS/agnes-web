@@ -5,6 +5,7 @@ import { iconBeforeStyles } from "../../styles/mixins";
 import { Tag, Tags, getTagName, getTagBG } from "../Tags";
 import distanceIcon from '../../assets/distance.png';
 import starIcon from '../../assets/star.png';
+import { ButtonPrimary } from "../Button";
 
 const StyledCard = styled.li`
   background: var(--color-base);
@@ -46,17 +47,20 @@ const StyledCard = styled.li`
   }
 
   .tags {
-    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     li {
       margin-top: 0.5rem;
     }
   }
+
+  .evaluation-btn {
+    margin-top: 1rem;
+  }
   
 `;
 
-const SchoolCard = ({info, location, setSelectedSchool, tags}) => {
+const SchoolCard = ({info, location, setSelectedSchool, tags, mySchool}) => {
 
 
   return (
@@ -80,6 +84,13 @@ const SchoolCard = ({info, location, setSelectedSchool, tags}) => {
         ))}
         </ul>
       ) : null}
+
+      {mySchool && (
+        <Link to='/avaliar'>
+          <ButtonPrimary className="evaluation-btn">Avaliar</ButtonPrimary>
+        </Link>
+      )}
+
     </StyledCard>
     // </Link>
   )

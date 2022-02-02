@@ -29,8 +29,8 @@ const LoginPage = () => {
   }
   
   return (
-    <main>
-      user: {userInfo.name}
+    <main className="page">
+      {/* user: {userInfo.name} */}
       <form>
         <Label>
           E-mail

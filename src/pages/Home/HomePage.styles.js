@@ -15,6 +15,9 @@ export const StyledHome = styled.main`
     padding: 18px var(--app-margin);
     z-index: 99;
     /*box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);*/
+    display: flex;
+    justify-content: space-between;
+    background: var(--color-bg-primary);
   }
 
   h1 {
@@ -35,9 +38,9 @@ export const StyledHome = styled.main`
     margin-top: 1.5rem;
   }
 
-  h3 {
+  /* h3 {
     font-size: 1.125rem;
-  }
+  } */
 
   .search-field {
     position: relative;

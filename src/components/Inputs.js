@@ -190,3 +190,12 @@ export const InputGroup = styled.div`
   flex-wrap: wrap;
   justify-content: ${({center}) => center ? 'center' : 'flex-start'};
 `;
+
+export const Textarea = styled.textarea`
+  margin-top: 0.5rem;
+  padding: .5rem .75rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px solid var(--color-text);
+`;

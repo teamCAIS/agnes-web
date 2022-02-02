@@ -9,3 +9,11 @@ export const getSchools = async (page=1, filters={}) => {
     const result = await api.get(`/schools/${query}`);
     return result;
 }
+
+export const evaluate = async (payload, token) => {
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
+    const result = await api.post(`/evaluations/`, payload, config);
+    return result;
+}
