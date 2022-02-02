@@ -102,15 +102,15 @@ export const ToggleSwitch = styled.label`
 
 export const RangeSlider = styled.div`
   width: 100%;
-  margin: 1rem 0;
+  margin: 1rem 0 .5rem 0;
 
   input {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 6px; /* Specified height */
+    height: 8px; /* Specified height */
     border-radius: 6px;
-    background: var(--color-text);
+    background: var(--color-text-transparent);
     outline: none; /* Remove outline */
   }
 
@@ -128,9 +128,9 @@ export const RangeSlider = styled.div`
     height: 20px; /* Slider handle height */
     box-sizing: border-box;
     border-radius: 50%;
-    background: var(--color-link);
+    background: var(--color-text-accent);
     cursor: pointer; /* Cursor on hover */
-    border: 6px solid var(--color-text);
+    border: none;
   }
 
 `;
@@ -148,9 +148,11 @@ export const StarInput = styled.label`
     ${iconBeforeStyles}
     cursor: pointer;
     background-image: ${({icon}) => `url(${icon});`}
-    width: 40px;
-    height: 40px;
-    margin-right: 0;
+    width: 20px;
+    height: 20px;
+    margin: 6px .5rem;
+    position: relative;
+    top: 1px;
   }
 
 `;
@@ -164,11 +166,24 @@ export const TagInput = styled.label`
     position: absolute;
   }
 
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: .25rem;
   border-radius: 16px;
-  padding: 4px 8px;
+  padding: 4px 8px 5px 8px;
   width: fit-content;
-  background: ${({bg}) => bg ? bg : 'var(--color-line)'};
+  background: ${({checked}) => checked ? 'var(--color-secondary)' : 'transparent'};
+  border:${({checked}) => checked ? '1px solid var(--color-secondary)' : '1px solid var(--color-text-accent)'};
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-accent);
 
+`;
+
+export const InputGroup = styled.div`
+  background: var(--color-bg-secondary);
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  padding: 8px 6px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: ${({center}) => center ? 'center' : 'flex-start'};
 `;

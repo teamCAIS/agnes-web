@@ -4,6 +4,7 @@ import calendarIcon from '../../assets/calendar.png';
 import starIcon from '../../assets/star.png';
 
 const StyledCard = styled.li`
+  background: var(--color-base);
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 1rem;

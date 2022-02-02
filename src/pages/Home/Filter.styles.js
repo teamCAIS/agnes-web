@@ -5,8 +5,16 @@ export const StyledFilter = styled.main`
   margin: auto;
   overflow-x: hidden;
 
-  h1, h2, h3 {
+  h1, h3 {
     font-size: 1.125rem;
+  }
+
+  h2, .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 1rem;
   }
 
   .app-bar {
@@ -28,34 +36,16 @@ export const StyledFilter = styled.main`
   }
 
   .info-text {
-    margin: 2rem var(--app-margin) 2rem var(--app-margin);
+    margin: 1rem var(--app-margin) 1rem var(--app-margin);
   }
 
   .selected-distance {
     text-align: center;
+    font-size: 0.875rem;
   }
 
   .form-section {
     font-weight: 600;
-  }
-
-  .star-group {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.5rem;
-    & > * {
-      margin: 0 0.5rem;
-    }
-  }
-
-  .tag-section {
-    padding-right: 0;
-  }
-
-  .tag-group {
-    overflow: auto;
-    white-space: nowrap;
-    margin: 1rem 0rem 2rem 0;
   }
 
 `;

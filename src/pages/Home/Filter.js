@@ -2,7 +2,7 @@ import { ButtonLabel, ButtonPrimary, ImageButton } from "../../components/Button
 import { SmallTag, Tag, Tags } from "../../components/Tags";
 import { StyledFilter } from "./Filter.styles";
 import back from '../../assets/back.png'
-import { Label, RangeSlider, StarInput, TagInput } from "../../components/Inputs";
+import { InputGroup, Label, RangeSlider, StarInput, TagInput } from "../../components/Inputs";
 import React, { useEffect, useState } from "react";
 import star from '../../assets/star2.png'
 import starOutline from '../../assets/star-outline.png'
@@ -84,10 +84,10 @@ const Filter = ({
         </ImageButton>
       </header>
       <div>
-        <p className="info-text">Você pode refinar sua busca ajustando os filtros abaixo</p>
+        <p className="info-text">Você pode utilizar as opções abaixo para refinar sua busca.</p>
         <section>
           <Label>
-            Distância máxima da sua casa
+            <span className="section-title">Distância máxima</span>
             <RangeSlider>
               <input type="range"
                 value={applyingFilters.radius}
@@ -103,8 +103,8 @@ const Filter = ({
           </Label>
         </section>
         <section className="form-section">
-          Nota mínima
-          <div className="star-group">
+          <h2>Avaliação mínima</h2>
+          <InputGroup center>
               <StarInput icon={Number(applyingFilters.grade) >= 1 ? star : starOutline}>
                 <input type="radio" name="grade" value="1"
                   checked={applyingFilters.grade === "1"}
@@ -136,16 +136,16 @@ const Filter = ({
                 onChange={onChangeGrade}
               /><ButtonLabel>5</ButtonLabel>
               </StarInput>
-          </div>
+          </InputGroup>
         </section>
-        <section className="form-section tag-section">
-            Tags
-            <div className="tag-group">
+        <section className="form-section">
+            <h2>Tags atribuídas</h2>
+            <InputGroup>
 
             {tags.map((tag, index) => (
               <React.Fragment key={tag._id}>
               <TagInput
-                bg={isTagChecked(tag._id) ? tag.color : null}
+                checked={isTagChecked(tag._id)}
               >
                 <input type="checkbox" 
                   value={tag._id}
@@ -153,10 +153,9 @@ const Filter = ({
                   onChange={onChangeTags}
                 /> {tag.name}
               </TagInput>
-              {(index + 1) % 3 === 0 ? (<br/>) : null}
               </React.Fragment>
             ))}
-            </div>
+            </InputGroup>
 
         </section>
         <footer>
