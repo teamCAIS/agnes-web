@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/agnes-web/static/css/main.d9a2fc68.css",
-    "main.js": "/agnes-web/static/js/main.7cc1d9ef.js",
+    "main.css": "/agnes-web/static/css/main.591633aa.css",
+    "main.js": "/agnes-web/static/js/main.2e0cdd66.js",
     "static/js/787.2ad78dbd.chunk.js": "/agnes-web/static/js/787.2ad78dbd.chunk.js",
     "static/media/map.jpg": "/agnes-web/static/media/map.30aadf523cacbc017934.jpg",
     "index.html": "/agnes-web/index.html",
-    "main.d9a2fc68.css.map": "/agnes-web/static/css/main.d9a2fc68.css.map",
-    "main.7cc1d9ef.js.map": "/agnes-web/static/js/main.7cc1d9ef.js.map",
+    "main.591633aa.css.map": "/agnes-web/static/css/main.591633aa.css.map",
+    "main.2e0cdd66.js.map": "/agnes-web/static/js/main.2e0cdd66.js.map",
     "787.2ad78dbd.chunk.js.map": "/agnes-web/static/js/787.2ad78dbd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9a2fc68.css",
-    "static/js/main.7cc1d9ef.js"
+    "static/css/main.591633aa.css",
+    "static/js/main.2e0cdd66.js"
   ]
 }
