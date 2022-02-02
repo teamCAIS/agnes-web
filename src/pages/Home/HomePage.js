@@ -26,6 +26,14 @@ const renderFilter = (key, value, locationEnabled, tags) => {
     content = tagsArray.join(", ");
   }
 
+  if(key == "grade") {
+    if(value < 2) {
+      content += " estrela"
+    } else {
+      content += " estrelas"
+    }
+  }
+
   return (
     <li className={`${key}`}>
       <b>{label}:</b>{" "}{content}
@@ -85,7 +93,7 @@ const HomePage = ({
       
       {currentFilters.isFiltering ? (
         <>
-        <h2>Filtros aplicados</h2>
+        <h2 className="filters-title">Filtros aplicados</h2>
         <ul className="filters">
           {Object.entries(currentFilters.filters)
             .map(([key, value]) => 

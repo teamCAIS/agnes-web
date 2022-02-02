@@ -71,4 +71,5 @@ export const LinkButton = styled(Button)`
   margin: 0.5rem auto;
   display: block;
   text-decoration: underline;
+  font-family: 'Source Sans Pro', sans-serif;
 `

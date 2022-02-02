@@ -9,14 +9,17 @@ export const Tag = styled.li`
   margin-right: 0.5rem;
   border-radius: 16px;
   background: var(--color-line);
-  padding: 4px 8px;
   width: fit-content;
-  background: ${({bg}) => bg ? bg : 'var(--color-line)'};
+  background: ${({bg}) => bg ? bg : 'var(--color-secondary)'};
+  color: var(--color-text-accent);
+  font-size: 0.75rem;
+  padding: 8px;
+  padding-top: 4px;
+  padding-bottom: 5px;
 `;
 
 export const SmallTag = styled(Tag)`
-  font-size: 0.75rem;
-  padding: 8px;
+  
 `;
 
 export const getTagBG = (tag, tags) => {

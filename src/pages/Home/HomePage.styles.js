@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { iconBeforeStyles } from '../../styles/mixins';
-import star from '../../assets/star-gray.png';
-import distance from '../../assets/distance-gray.png';
+import star from '../../assets/star.png';
+import distance from '../../assets/distance.png';
 import tags from '../../assets/tags-gray.png';
 
 export const StyledHome = styled.main`
@@ -49,9 +49,16 @@ export const StyledHome = styled.main`
     }
   }
 
+  h2.filters-title {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
   .filters {
     margin: 0.5rem 0;
     li {
+      margin: 0.25rem 0;
       color: var(--color-gray);
       &::before {
         ${iconBeforeStyles}

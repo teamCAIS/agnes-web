@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import mappic from '../../assets/map.jpg';
 import { getMapLink, getMapUrl } from "../../api/maps";
 
-const SchoolDetails = ({school,setSelectedSchool,tags}) => {
+const SchoolDetails = ({school,setSelectedSchool,tags, location}) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,7 +16,7 @@ const SchoolDetails = ({school,setSelectedSchool,tags}) => {
   return (
     <StyledSchoolDetails>
       <header>
-        <h1>{school.name}</h1>
+        <h1>Detalhes da escola</h1>
         <ImageButton 
           icon={back}
           size="16px"
@@ -40,7 +40,7 @@ const SchoolDetails = ({school,setSelectedSchool,tags}) => {
         </a>
           <ul className="tags">
             {school.tags.map(tag => (
-              <SmallTag bg={getTagBG(tag, tags)}>
+              <SmallTag>
                 {getTagName(tag, tags)}
               </SmallTag>
             ))}
@@ -49,17 +49,20 @@ const SchoolDetails = ({school,setSelectedSchool,tags}) => {
 
         <div className="content">
 
-        <section className="info">
-          <h2>Endereço</h2>
+        <section>
+          <h2 className="school-name">{school.name}</h2>
+          <ul className="info">
+            {school.distance ? (
+              <li className="distance">{school.distance}km</li>
+            ) : null}
+            <li className="grade">{school.grade}</li>
+          </ul>
           <p className="address">{school.address}</p>
-          <div className="overall-grade">
-            {school.grade}
-          </div>
         </section>
 
         <section className="comments">
 
-          <h2>Comentários (2)</h2>
+          <h2>Comentários <span>(2)</span></h2>
           
           <CommentCard />
           <CommentCard />

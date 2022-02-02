@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 import star from '../../assets/star2.png';
 import { iconBeforeStyles } from '../../styles/mixins';
+import distanceIcon from '../../assets/distance.png';
+import starIcon from '../../assets/star.png';
 
 export const StyledSchoolDetails = styled.main`
   max-width: 700px;
   margin: auto;
 
-  h1, h2, h3 {
+  h1 {
     font-size: 1.125rem;
+  }
+
+  h2.school-name {
+    margin: 0;
   }
 
   header {
@@ -20,7 +26,7 @@ export const StyledSchoolDetails = styled.main`
     align-items: center;
     flex-direction: row-reverse;
     justify-content: left;
-    background: var(--color-base-transparent);
+    background: var(--color-bg-transparent);
     position: fixed;
     z-index: 1;
 
@@ -62,7 +68,7 @@ export const StyledSchoolDetails = styled.main`
 
   section {
     position: relative;
-    padding: var(--app-margin) 0;
+    padding: 1rem 0;
   }
 
   .overall-grade {
@@ -85,11 +91,39 @@ export const StyledSchoolDetails = styled.main`
   .address {
     line-height: 1.5em;
     margin: 0;
-    margin-top: 1em;
+    margin-top: 0.25rem;
+  }
+
+  h2 span {
+    font-family: inherit;
+    color: inherit;
+    font-weight: 200;
   }
 
   .comments {
     border-top: 1px solid var(--color-line);
+  }
+
+  .info {
+    display: flex;
+    color: var(--color-gray);
+    margin-top: 0.5rem;
+    li {
+      margin-right: 1rem;
+      &::before {
+        ${iconBeforeStyles}
+        width: 0.75rem;
+        height: 0.75rem;
+        margin-right: 0.375rem;
+      }
+    }
+
+    .grade::before {
+      background-image: url(${starIcon});
+    }
+    .distance::before {
+      background-image: url(${distanceIcon});
+    }
   }
 
 `;

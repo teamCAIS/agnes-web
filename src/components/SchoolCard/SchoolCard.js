@@ -47,6 +47,8 @@ const StyledCard = styled.li`
 
   .tags {
     margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
     li {
       margin-top: 0.5rem;
     }
@@ -72,7 +74,6 @@ const SchoolCard = ({info, location, setSelectedSchool, tags}) => {
         {info.tags.slice(0, 2).map(tag => (
           <Tag 
             key={`tag=${tag._id}&school=${info._id}`}
-            bg={getTagBG(tag, tags)}
           >
             {getTagName(tag, tags)}
           </Tag>

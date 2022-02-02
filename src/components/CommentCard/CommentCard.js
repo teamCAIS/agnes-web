@@ -15,6 +15,7 @@ const StyledCard = styled.li`
     text-overflow: ellipsis;
     overflow: hidden;
     text-transform: capitalize;
+    font-size: 1rem;
   }
 
   p {
