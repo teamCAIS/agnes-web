@@ -3,15 +3,31 @@ import { getTagBG, getTagName, SmallTag, Tags } from "../../components/Tags";
 import { StyledSchoolDetails } from "./SchoolDetails.styles";
 import back from '../../assets/back.png'
 import CommentCard from "../../components/CommentCard/CommentCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import mappic from '../../assets/map.jpg';
 import { getMapLink, getMapUrl } from "../../api/maps";
+import { getComments } from "../../api/schools";
 
 const SchoolDetails = ({school,setSelectedSchool,tags, location}) => {
+
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])
+
+  /* useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await getComments(school._id);
+        console.log(result.data);
+        setComments(result.data)
+      } catch(error) {
+        console.warn(error);
+      }
+    }
+    getData();
+  }, []) */
 
   return (
     <StyledSchoolDetails>

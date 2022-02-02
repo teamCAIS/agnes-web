@@ -17,3 +17,9 @@ export const evaluate = async (payload, token) => {
     const result = await api.post(`/evaluations/`, payload, config);
     return result;
 }
+
+export const getComments = async (school, page=1) => {
+    const query = `?page=${page}&school=${school}`;
+    const result = await api.get(`/evaluations/comments/${query}`);
+    return result;
+}
