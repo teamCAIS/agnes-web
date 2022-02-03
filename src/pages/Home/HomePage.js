@@ -122,7 +122,7 @@ const HomePage = ({
 
       {userInfo && userInfo.school && (
         <section>
-          <h2>Minha escola</h2>
+          <h2>Sua escola</h2>
           <SchoolCard 
             info={userInfo.school}
             location={filters.coordinates ? filters.coordinates.split(",") : null}

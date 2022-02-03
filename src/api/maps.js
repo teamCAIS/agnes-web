@@ -1,5 +1,4 @@
 export const getMapUrl = (lat, lon) => {
-  console.log("GETTING MAP FROM BING");
   const base = 'https://dev.virtualearth.net/REST/v1/Imagery/Map/Road';
   const zoomLevel = 17;
   const key = 'AkRg5giPLHVpcYHMZjBuyb5RkFEiVtjLXBzQ8rId8ozy_jlKOJGZgaY9x-WsZH99';

@@ -40,6 +40,12 @@ export const ButtonPrimary = styled(Button)`
   font-weight: 600;
 `;
 
+export const ButtonOutline = styled(ButtonPrimary)`
+  background: transparent;
+  padding: 0.4rem;
+  border: 1px solid var(--color-text-accent);
+`;
+
 export const ImageButton = styled(Button)`
   width: ${({size}) => size ? size : `1.5rem`};
   height: ${({size}) => size ? size : `1.5rem`};

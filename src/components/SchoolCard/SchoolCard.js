@@ -5,7 +5,7 @@ import { iconBeforeStyles } from "../../styles/mixins";
 import { Tag, Tags, getTagName, getTagBG } from "../Tags";
 import distanceIcon from '../../assets/distance.png';
 import starIcon from '../../assets/star.png';
-import { ButtonPrimary } from "../Button";
+import { ButtonOutline, ButtonPrimary } from "../Button";
 
 const StyledCard = styled.li`
   background: var(--color-base);
@@ -87,7 +87,7 @@ const SchoolCard = ({info, location, setSelectedSchool, tags, mySchool}) => {
 
       {mySchool && (
         <Link to='/avaliar'>
-          <ButtonPrimary className="evaluation-btn">Avaliar</ButtonPrimary>
+          <ButtonOutline className="evaluation-btn">Avaliar escola</ButtonOutline>
         </Link>
       )}
 

@@ -56,7 +56,7 @@ const SchoolDetails = ({school,setSelectedSchool,tags, location}) => {
         </a>
           <ul className="tags">
             {school.tags.map(tag => (
-              <SmallTag>
+              <SmallTag key={`school-tagId-${tag._id}`}>
                 {getTagName(tag, tags)}
               </SmallTag>
             ))}
