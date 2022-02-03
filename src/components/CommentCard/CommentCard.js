@@ -57,14 +57,21 @@ const StyledCard = styled.li`
 
 const CommentCard = ({comment}) => {
 
+  const createdAt =  new Date(comment.createdAt);
+  const day = createdAt.toLocaleDateString('pt-br', {day:'2-digit'});
+  const month = createdAt.toLocaleDateString('pt-br', {month: 'short'});
+  const year = createdAt.toLocaleDateString('pt-br', {year:'numeric'});
+
+  const dateString = `${day}/${month.slice(0,-1)}/${year}`;
+
   return (
     <StyledCard>
       <h3>Anônimo</h3>
       <ul className="info">
-        <li className="grade">4,5</li>
-        <li className="date">16/jan/2022</li>
+        <li className="grade">{comment.grade}</li>
+        <li className="date">{dateString}</li>
       </ul>
-      <p>Lorem ipsum dolor site amet, consectur adipiscint elit. Integer massa duis ipsum faucibus volutpat scelerisque</p>
+      <p>{comment.comment}</p>
     </StyledCard>
   )
 }

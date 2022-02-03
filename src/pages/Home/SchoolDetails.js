@@ -16,7 +16,7 @@ const SchoolDetails = ({school,setSelectedSchool,tags, location}) => {
     window.scrollTo(0, 0);
   }, [])
 
-  /* useEffect(() => {
+  useEffect(() => {
     const getData = async () => {
       try {
         const result = await getComments(school._id);
@@ -27,7 +27,7 @@ const SchoolDetails = ({school,setSelectedSchool,tags, location}) => {
       }
     }
     getData();
-  }, []) */
+  }, [])
 
   return (
     <StyledSchoolDetails>
@@ -78,10 +78,14 @@ const SchoolDetails = ({school,setSelectedSchool,tags, location}) => {
 
         <section className="comments">
 
-          <h2>Comentários <span>(2)</span></h2>
+          <h2>Comentários <span>({comments.length})</span></h2>
           
-          <CommentCard />
-          <CommentCard />
+          {comments.map(comment => (
+            <CommentCard
+              key={`comment-${comment._id}`}
+              comment={comment}
+            />
+          ))}
 
         </section>
       </div>

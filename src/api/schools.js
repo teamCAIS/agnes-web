@@ -18,8 +18,8 @@ export const evaluate = async (payload, token) => {
     return result;
 }
 
-export const getComments = async (school, page=1) => {
-    const query = `?page=${page}&school=${school}`;
+export const getComments = async (school) => {
+    const query = `?school=${school}`;
     const result = await api.get(`/evaluations/comments/${query}`);
     return result;
 }
