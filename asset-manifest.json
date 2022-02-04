@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/agnes-web/static/css/main.a5f8166b.css",
-    "main.js": "/agnes-web/static/js/main.caf3d0ad.js",
+    "main.js": "/agnes-web/static/js/main.670931a6.js",
     "static/js/787.2ad78dbd.chunk.js": "/agnes-web/static/js/787.2ad78dbd.chunk.js",
     "static/media/map.jpg": "/agnes-web/static/media/map.30aadf523cacbc017934.jpg",
     "index.html": "/agnes-web/index.html",
     "main.a5f8166b.css.map": "/agnes-web/static/css/main.a5f8166b.css.map",
-    "main.caf3d0ad.js.map": "/agnes-web/static/js/main.caf3d0ad.js.map",
+    "main.670931a6.js.map": "/agnes-web/static/js/main.670931a6.js.map",
     "787.2ad78dbd.chunk.js.map": "/agnes-web/static/js/787.2ad78dbd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a5f8166b.css",
-    "static/js/main.caf3d0ad.js"
+    "static/js/main.670931a6.js"
   ]
 }
