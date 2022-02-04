@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../api/auth";
-import { ButtonPrimary } from "../../components/Button";
+import { ButtonPrimary, LinkButton } from "../../components/Button";
 import { Label, TextInput } from "../../components/Inputs";
 import UserContext from "../../contexts/UserContext";
+import { StyledLogin } from "./LoginPage.styles";
 
 const LoginPage = () => {
 
@@ -29,9 +30,13 @@ const LoginPage = () => {
   }
   
   return (
-    <main className="page">
-      {/* user: {userInfo.name} */}
-      <form>
+    <StyledLogin>
+      <header>
+        <h1>
+          AGNES <span>escolas</span>
+        </h1>
+      </header>
+      <form className="content">
         <Label>
           E-mail
           <TextInput value={email} onChange={e => setEmail(e.target.value)} />
@@ -42,7 +47,10 @@ const LoginPage = () => {
         </Label>
         <ButtonPrimary onClick={doLogin}>Entrar</ButtonPrimary>
       </form>
-    </main>
+      <Link to='/'>
+      <LinkButton>Continuar como visitante</LinkButton>
+      </Link>
+    </StyledLogin>
   )
 }
 
