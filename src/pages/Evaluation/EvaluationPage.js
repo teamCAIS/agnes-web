@@ -9,12 +9,12 @@ import { StyledEvaluation } from "./EvaluationPage.styles";
 import star from '../../assets/star2.png'
 import starOutline from '../../assets/star-outline.png'
 import { getTags } from "../../api/tags";
-import { evaluate } from "../../api/schools";
+import { evaluate, getSchools } from "../../api/schools";
 import { Snackbar } from "../../components/Feedbacks";
 
 const EvaluationPage = () => {
 
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
   const [grade, setGrade] = useState(0);
   const [tags, setTags] = useState([]);
@@ -48,12 +48,21 @@ const EvaluationPage = () => {
       const result = await evaluate(payload, userInfo.token);
       console.log(result.data);
       setSuccess(true);
-      setTimeout(() => {
+
+      const schools = await getSchools(1, {search: userInfo.school.name})
+      const newSchool = schools.data.docs.find(item => item._id === userInfo.school._id);
+      if(newSchool) {
+        setUserInfo({...userInfo, school: newSchool});
+        localStorage.setItem("agnesUser", JSON.stringify({...userInfo, school: newSchool}));
+        navigate("/");
+      }
+
+      /* setTimeout(() => {
         setSuccess(false);
         setTimeout(() => {
           navigate("/");
         }, 1000)
-      }, 2000)
+      }, 2000) */
     } catch(err) {
       console.warn(err);
     }

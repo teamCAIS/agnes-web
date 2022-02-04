@@ -10,7 +10,7 @@ const LoginPage = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {userInfo, setUserInfo} = useContext(UserContext);
+  const { setUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
 
   const doLogin = async (e) => {
