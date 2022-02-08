@@ -9,6 +9,7 @@ import locationIcon from "../../assets/location.png";
 import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import { useContext } from "react";
+import { Snackbar } from "../../components/Feedbacks";
 
 const renderFilter = (key, value, locationEnabled, tags) => {
   let label = "Nota";
@@ -153,6 +154,7 @@ const HomePage = ({
         )}
       </section>
       </div>
+      {/* <Snackbar>Avaliação enviada com sucesso!</Snackbar> */}
     </StyledHome>
   )
 

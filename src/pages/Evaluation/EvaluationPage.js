@@ -171,7 +171,7 @@ const EvaluationPage = () => {
         </footer>
       </div>
       {success && (
-        <Snackbar>Avaliação enviada com sucesso!</Snackbar>
+        <Snackbar success>Avaliação enviada com sucesso!</Snackbar>
       )}
     </StyledEvaluation>
   )
