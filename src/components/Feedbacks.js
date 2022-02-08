@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { iconBeforeStyles } from "../styles/mixins";
 import successIcon from "../assets/success.png";
 import errorIcon from "../assets/error.png";
+import spinner from "../assets/spinner.png";
 
 export const Snackbar = styled.div`
 
@@ -23,4 +24,28 @@ export const Snackbar = styled.div`
     background-image: ${({success}) => success ? `url(${successIcon})` : `url(${errorIcon})`};
   }
 
+`;
+
+export const LoadingSpinner = styled.span`
+  color: transparent;
+  position:relative;
+
+  &::before {
+    ${iconBeforeStyles}
+    background-image: url(${spinner});
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 2rem;
+    height: 2rem;
+    animation:spin 1.2s linear infinite;
+  }
+
+  @keyframes spin { 
+    100% { 
+      transform: translate(-50%,-50%) rotate(360deg); 
+    } 
+}
+  
 `;
