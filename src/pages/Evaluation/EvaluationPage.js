@@ -10,17 +10,20 @@ import star from '../../assets/star2.png'
 import starOutline from '../../assets/star-outline.png'
 import { getTags } from "../../api/tags";
 import { evaluate, getSchools } from "../../api/schools";
-import { Snackbar } from "../../components/Feedbacks";
+import { LoadingSpinner, Snackbar } from "../../components/Feedbacks";
+import ErrorContext from "../../contexts/ErrorContext";
 
 const EvaluationPage = () => {
 
   const { userInfo, setUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
-  const [grade, setGrade] = useState(0);
+  const [grade, setGrade] = useState(1);
   const [tags, setTags] = useState([]);
   const [tagsSelected, setTagsSelected] = useState([]);
   const [comment, setComment] = useState("");
   const [success, setSuccess] = useState(false);
+  const { setError } = useContext(ErrorContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getTagsInfo = async () => {
@@ -28,7 +31,7 @@ const EvaluationPage = () => {
         const result = await getTags();
         setTags(result.data)
       } catch(error) {
-        console.warn(error);
+        console.warn(error.response);
       }
     }
     getTagsInfo();
@@ -36,6 +39,7 @@ const EvaluationPage = () => {
 
   const doEvaluate = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const payload = {
         grade,
@@ -64,8 +68,13 @@ const EvaluationPage = () => {
         }, 1000)
       }, 2000) */
     } catch(err) {
-      console.warn(err);
+      if(err.response) {
+        setError(err.response.data.message);
+      } else {
+        setError("Não foi possível realizar a avaliação");
+      }
     }
+    setLoading(false);
 
   }
 
@@ -166,7 +175,11 @@ const EvaluationPage = () => {
         </section>
         <footer>
           <ButtonPrimary onClick={doEvaluate} className="submit-btn">
-            Enviar avaliação
+            {loading ? (
+              <LoadingSpinner>Carregando</LoadingSpinner>
+            ) : (
+              'Enviar avaliação'
+            )}
           </ButtonPrimary>
         </footer>
       </div>
